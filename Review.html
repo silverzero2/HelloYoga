@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;700&family=Nanum+Gothic+Coding:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <title>Review</title>
+  <style>
+    body {
+      width: 680px;
+      margin: 0 auto;
+      background-image: url("./project_img_vedio/bg.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      font-family: 'Abril Fatface', serif;
+      font-family: 'Montserrat', sans-serif;
+      font-family: 'Nanum Gothic Coding', monospace;
+    }
+
+    .review {
+      width: 600px;
+      margin: 20px 40px 20px 40px;
+      padding: 10px;
+
+    }
+
+    #input_emoji {
+      width: 580px;
+      height: 38px;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 5px;
+      color: darkgray;
+    }
+
+    h1 {
+      margin: 50px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 60px;
+    }
+
+    button {
+      display: inline-block
+    }
+
+    .button {
+      text-align: center;
+      transition: all 0.2s linear;
+    }
+
+    #btn:hover {
+      transform: scale(1.1);
+      box-shadow: 1px 1px 5px rgb(32, 73, 255);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="review">
+    <h1>Review</h1>
+    <div class="mb-3">
+      <label for="input_name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="input_name">
+    </div>
+    <div class="emoji">
+      <label for="emoji_slider_wrap" class="form-label">Emoji</label>
+      <select id="input_emoji">
+        <option class="nnn" value="">수업은 어떠셨나요?🙂</option>
+        <option value="5">🥰🥰🥰🥰🥰</option>
+        <option value="4">😊😊😊😊</option>
+        <option value="3">😢😢😢</option>
+        <option value="2">🤔🤔</option>
+        <option value="1">😒</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="input_text" class="form-label">Review</label>
+      <textarea class="form-control" id="input_text" rows="5"></textarea>
+    </div>
+    <div class="button">
+      <button id="btn" type="submit" class="btn btn-primary" onclick="getReview()">리뷰 남기기</button>
+    </div>
+  </div>
+  <hr>
+
+  <div class="review_box">
+    <div id="get_name"></div>
+    <div id="get_emoji"></div>
+    <div id="get_text"></div>
+  </div>
+
+  <div>
+    <div>나나</div>
+    <div>😢😢😢</div>
+    <div>첫날이라 수업이 따라가기 힘들었어요😭 하다보면 조금씩 늘겠죠...? </div>
+  </div>
+  <hr>
+
+  <div>
+    <div>가가</div>
+    <div>🥰🥰🥰🥰🥰</div>
+    <div>몸과 마음 모두 편안해지는 좋은 시간이였습니다.</div>
+  </div>
+  <hr>
+</body>
+
+<script>
+  /*
+    function getReview() {
+    const name = document.getElementById("input_name");
+    const emoji = document.getElementById("input_emoji");
+    const text = document.getElementById("input_text");
+    //console.log(name.value + ', ' + emoji.options[emoji.selectedIndex].text + ', ' + text.value);
+
+    if (name.value !='' && text.value !='' && emoji.value !='') {
+      document.getElementById("get_name").innerText = name.value;
+      document.getElementById("get_text").innerText = text.value;
+      document.getElementById("get_emoji").innerText = emoji.options[emoji.selectedIndex].text;
+      $(".review_box").css({
+        "border-bottom": "0.5px solid darkgray",
+        "margin-bottom": "10px",
+        "padding-bottom": "10px"
+      });
+      clear_review();
+    }
+    else {
+      alert("값을 전부 입력해주세요!")
+    }
+  }
+  */
+  function getReview() {
+    var name = $("#input_name");
+    var emoji = $("#input_emoji");
+    var text = $("#input_text");
+    //console.log(name.val() + ', ' + $("#input_emoji option:selected").text() + ', ' + text.val());
+    if (name.val() != "" && text.val() != "" && emoji.val() != "") {
+      $("#get_name").text(name.val());
+      $("#get_text").text(text.val());
+      $("#get_emoji").text($("#input_emoji option:selected").text());
+      $(".review_box").css({
+        "border-bottom": "0.5px solid darkgray",
+        "margin-bottom": "10px",
+        "padding-bottom": "10px"
+      });
+      clear_review();
+    }
+    else {
+      alert("값을 전부 입력해주세요!")
+    }
+  }
+
+  function clear_review() {
+    $("#input_name,#input_emoji,#input_text").val('');
+  }
+</script>
+</html>

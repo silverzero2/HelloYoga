@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;700&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
+  <script src="./jquery.com/code.jquery.com_jquery-3.7.1.min.js"></script>
+  <title>OurCenter</title>
+  <style>
+
+    body{
+      width: 1000px;
+      margin: 0 auto;
+      background-image: url("./project_img_vedio/bg.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;  
+    }
+
+    body div:not(.noFontStyle){ 
+      font-family: 'Abril Fatface', serif;
+      font-family: 'Montserrat', sans-serif;
+      font-family: 'Nanum Gothic Coding', monospace;
+      line-height:1.5;
+    }
+
+   h1{
+    font-size: 50px;
+   }
+
+    video{
+      border-radius: 5px;
+    }
+    
+    .video{
+      border: 3px solid gold;
+      padding: 20px 20px 20px 20px;
+      width: 900px;
+      height: 510px;
+      margin: 5px 30px 40px 30px;
+      border-radius: 5px;
+      float: left;
+    }
+
+    .center_span{
+      font-size: 25px;
+      word-break:break-all;
+    }
+
+    .point{
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+        
+    table, th ,td{
+      border: 1px solid blue;
+      text-align: center;
+    }
+ 
+    th, td{
+      padding: 5px;
+    }
+
+    th{
+      background-color:skyblue;
+    }
+
+    td{
+      font-size: 25px ;
+    }
+    
+    table{
+      width: 850px;
+      margin: auto;
+      border-collapse:collapse;
+      /* 테두리가 중첩되는걸 막아준다 */
+      font-style:sans-serif;
+    }
+  
+    /* class 사용하지 않고 nth-child 이용하기 */
+    table tr:nth-child(1) th{ 
+      background-color:blue;
+      color: white;
+    }
+    .c-font {
+      font-size: 25px;
+      font-weight: 700;
+    }
+    .nav{
+      background: linear-gradient(rgb(159, 245, 245, 0.8), rgb(255,255,255,0.8));
+      border-radius: 5px;
+      position:fixed;
+      width: 1000px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .nav ul{
+      text-align: center;
+      margin: 0 auto;
+      padding: 30px;
+    }
+
+    .nav ul li{
+      display: inline-block;
+      margin: 0 50px;
+      cursor: pointer;
+		  list-style:none;
+      
+    }
+    .nav ul li a{
+      text-decoration:none;
+	    color: rgb(35, 86, 255);
+    }
+
+    /*앵커 이동시 네비와 겹침 방지*/
+   #Ann ,#Bona ,#Colin, #Dora{ 
+    margin-top: -120px;
+    padding-top: 120px;
+   }
+
+    #centerinfo{
+      padding-top: 100px;
+    }
+
+   .trainer {
+    margin: 0px 250px;
+    font-size: 25px;
+   }
+
+   .img_guide{
+    height: 500px;
+    width: 500px;
+    background-color: white;
+  }
+  </style>
+</head>
+<body>
+  <div>
+ <nav class="nav"> 
+  <ul>
+    <li><a href="#centerinfo">센터 소개</a> </li>
+    <li><a href="#sale">이용권 안내</a> </li>
+    <li><a href="#trainer">트레이너 소개</a></li>
+  </ul>
+</nav>
+  </div>
+ <h1 id="centerinfo" >센터 소개</h1>
+ 
+ <div class="video">
+  <video src="./project_img_vedio/요가.mp4" controls autoplay muted width="900px"></video>
+</div>
+<div > 
+  <span class="center_span">
+    <span class="point">Hello,Yoga</span> 는 바쁜 현대인의 완전한 몸의 이완 정신적 치유를 돕는 프로그램을 중심으로 심신을 정화 하는데 노력합니다.<br>
+    플라잉요가, 매트요가, 명상, 소도구 필라테스, 기구 필라테스등
+    다양한 프로그램과 함께 언제든 편하게 와서 수련하고, 쉴 수 있는 누구에게나 열려있는 공간입니다.<br><br>
+    <span class="point">Hello,Yoga</span> 에서는 여러분의 건강한 정신, 마음의 평화, 근막 이완, 자세교정, 체형교정, 다이어트, 전신근력강화, 유연성증대 등
+    우리 모두가 바라는 건강한 육체, 안정된 마음과 명확한 정신의 조화를 돕습니다.<br><br>
+    수련은 나의 한계를 무너트리고 자신을 알아가는 과정입니다.<br>
+    불가능할 것만 같았던 일들이 끊임없는 수련을 통해 가능해지고
+    새로운 나와 발전하는 자신의 모습을 저희 <span class="point">Hello,Yoga</span> 와 함께 경험해보세요.
+    <br><br><span class="point">Hello,Yoga에서 건강과 행복을 가꿔 가시길 바랍니다.</span>
+  </span>
+</div>
+  
+  <div class="noFontStyle"> <h1 id="sale">이용권 안내</h1>
+  <table>
+    <tr>
+      <th class="title c-font" colspan="4">Membership</th>
+    </tr>
+    <tr>
+      <th class="c-font">기간</th>
+      <th class="c-font">수업일</th>
+      <th class="c-font">비용</th>
+      <th class="c-font">1회 비용</th>
+    </tr>
+    <tr>
+      <td>1개월</td>
+      <td>8번</td>
+      <td>200,000원</td>
+      <td>25,000원</td>
+    </tr>
+    <tr>
+      <td>3개월</td>
+      <td>24+2회</td>
+      <td>504,000원</td>
+      <td>21,000원</td>
+    </tr>
+    <tr>
+      <td>6개월</td>
+      <td>48+5회</td>
+      <td>864,000원</td>
+      <td>18,000원</td>
+    </tr>
+    <tr>
+      <td>12개월</td>
+      <td>96+10회</td>
+      <td>1,440,000원</td>
+      <td>15,000원</td>
+    </tr>
+    <tr>
+      <th rowspan="3" class="c-font">
+        <img src="./project_img_vedio/nav_icon.png" alt="">
+      </th>
+     
+    </tr>
+    <tr>
+      <td colspan="3">원데이클래스 체험후 당일 등록시 3회 추가! </td>
+  </tr>
+    <tr>
+      <td colspan="3">12개월이상 등록시 문의 바랍니다!</td>
+    </tr>
+  </table>
+</div>
+<div>
+  <h1 id="trainer">트레이너 소개</h1>
+<div class="trainer">
+  <div class="img_guide">
+    <img src="./project_img_vedio/Ann1.png" alt="Ann" class="trainer_img" id="Ann">
+  </div>
+<h2>Ann</h2>
+<ul>
+  <li>하타 요가 전문</li>
+  <li>생활 스포츠 지도사 2급</li>
+  <li>체형 관리사2급</li>
+</ul>
+
+
+
+  <div class="img_guide">
+   <img src="./project_img_vedio/Bona1.png" alt="Bona" class="trainer_img" id="Bona"> 
+  </div>
+  <h2>Bona</h2>
+  <ul>
+    <li>아쉬탕가 요가 전문</li>
+    <li>생활 스포츠 지도사 1급</li>
+    <li>KPIA 자격증 보유</li>
+    <li>국제 요가 지도자 과정 수료</li>
+  </ul>
+
+  <div class="img_guide">
+  <img src="./project_img_vedio/Colin1.png" alt="Colin" class="trainer_img" id="Colin">
+</div>
+  <h2>Colin</h2>
+  <ul>
+    <li>젠 요가 전문</li>
+    <li>생활 스포츠 지도사 2급</li>
+    <li>쿤탈리니 요가 지도자 과정 수료</li>
+  </ul>
+  
+  <div class="img_guide">  
+    <img src="./project_img_vedio/Dora1.png" alt="Dora" class="trainer_img" id="Dora">
+  </div>
+    <h2>Dora</h2>
+    <ul>
+      <li>재활 요가 전문</li>
+      <li>스포츠 테이핑 2급</li>
+      <li>스포츠 마사지 1급</li>
+      <li>카이로 프라틱 3급</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+ 
+</body>
+</html>

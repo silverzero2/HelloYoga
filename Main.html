@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="./jquery.com/code.jquery.com_jquery-3.7.1.min.js"></script>
+	<title>Main</title>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+			background-image: url("./project_img_vedio/bg.jpg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			text-align: center;
+
+		}
+
+		.wrap {
+			/*border: 1px red solid;
+		width: 100vw;
+		height: 100vh;*/
+			width: 100%;
+			height: 100%;
+			display: inline-block
+		}
+
+		/* * {border: 1px black solid;}*/
+
+		header {
+			width: 100%;
+			height: 160px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+			clear: both;
+			color: rgb(49, 99, 250);
+			font-size: 60px;
+			font-style: italic;
+			font-weight: 700;
+		}
+
+		nav {
+			float: left;
+			width: 20%;
+			height: 600px;
+			margin-bottom: 20px;
+			padding: 10px 50px 10px 10px;
+			box-sizing: border-box;
+			font-size: 20px;
+		}
+
+		nav li {
+			cursor: pointer;
+			list-style: none;
+			margin: 20px 0px;
+			color: black;
+			font-weight: 700;
+		}
+
+		nav li:hover {
+			font-size: 25px;
+			border-radius: 10px;
+			background-color: rgb(194, 248, 248);
+			border: 10px solid transparent;
+		}
+
+		.hidden_menu {
+			display: none;
+		}
+
+		.hidden_menu>li {
+			margin-right: 25px;
+			border-top: 3px solid black;
+		}
+
+		.menu2:hover .hidden_menu {
+			display: block;
+		}
+
+		section {
+			float: right;
+			width: 80%;
+			height: 600px;
+			/*margin-right: 20px;*/
+			box-sizing: border-box;
+			padding: 10px;
+		}
+
+		.section_img {
+			width: 450px;
+			height: 540px;
+			margin: 0px 10px 30px 60px;
+			padding: 18px 5px 5px 18px;
+			float: left;
+			/*background-color: white;*/
+			border: 3px dashed black;
+		}
+
+		.section_img>h1 {
+			margin: 0;
+			padding: 0;
+		}
+
+		.section_img>div {
+			width: 200px;
+			height: 230px;
+			margin: 5px 10px 5px 5px;
+			float: left;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			border: 3px dashed black;
+			border-radius: 10px;
+		}
+
+		footer {
+			width: 100%;
+			height: 150px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			clear: both;
+			background-color: rgb(49, 99, 250);
+			color: white;
+		}
+
+		#sec_1 {
+			background-image: url("./project_img_vedio/Ann1.png");
+			cursor: pointer;
+		}
+		#sec_2 {
+			background-image: url("./project_img_vedio/Bona1.png");
+			cursor: pointer;
+		}
+		#sec_3 {
+			background-image: url("./project_img_vedio/Colin1.png");
+			cursor: pointer;
+		}
+		#sec_4 {
+			background-image: url("./project_img_vedio/Dora1.png");
+			cursor: pointer;
+		}
+
+		.slider_wrap {
+			width: 600px;
+			height: 540px;
+			margin: 0 30px 30px 50px;
+			padding: 10px;
+			float: left;
+			border: 3px dashed goldenrod;
+			border-radius: 10px;
+		}
+
+		nav a {
+			text-decoration: none;
+			color: black;
+		}
+
+		.icon {
+			width: 800px;
+			height: 25px;
+			display: flex;
+			flex-direction: row;
+			text-align: center;
+			justify-content: center;
+		}
+
+		.icon>div {
+			margin: 0 20px 0 10px;
+		}
+
+		.icon a {
+			text-decoration: none;
+			color: white;
+		}
+
+		#email {
+			cursor: pointer;
+		}
+
+		li {
+			list-style-type: none;
+		}
+
+		/* 슬라이드쇼 전체를 구간의 높이와 넓이 설정 */
+		#slideShow {
+			width: 550px;
+			height: 500px;
+			position: relative;
+			margin-left: 30px;
+			overflow: hidden;
+			/* overflow: hidden; : 
+		리스트 형식으로 이미지를 일렬로 정렬된 모습 확인 가능 (이미지가 가로로 주루룩)
+		hidden 사용하면  width,height를 벗어난 이미지들을 숨겨준다.*/
+		}
+
+		.slides {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 3000px;
+			/* 슬라이드할 사진과 마진 총 넓이 */
+			transition: left 0.5s ease-out;
+			/*ease-out: 처음에는 느렸다가 점점 빨라짐
+			background-color: blue;*/
+		}
+
+		/*첫 번째 슬라이드 가운데에 정렬하기위해
+		첫번째 슬라이드만 margin-left조정 
+		.slides li:first-child{
+		margin-left: 100px;
+			margin-right: 30px;
+		}
+		슬라이드들 옆으로 정렬 
+		.slides li:not(:last-child){
+			float: left;
+			margin-right: 100px;
+		} */
+
+		.slides li {
+			float: left;
+		}
+
+		.li_1 {
+			margin-left: 0px;
+			margin-right: 70px;
+		}
+		.li_2 {
+			margin-left: 30px;
+			margin-right: 60px;
+		}
+		.li_3 {
+			margin-left: 40px;
+			margin-right: 60px;
+		}
+		.li_4 {
+			margin-left: 40px;
+			margin-right: 30px;
+		}
+
+		.controller span {
+			position: absolute;
+			background-color: transparent;
+			color: black;
+			text-align: center;
+			border-radius: 50%;
+			padding: 10px 20px;
+			top: 50%;
+			font-size: 1.3em;
+			cursor: pointer;
+		}
+
+		/* 이전, 다음 화살표 (양쪽 두개)에 마우스 커서가 올라가 있을때 */
+		.controller span:hover {
+			background-color: rgba(128, 128, 128, 0.11);
+		}
+
+		.prev {
+			left: 10px;
+		}
+
+		/* 이전 화살표에 마우스 커서가 올라가 있을때 
+		이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+		.prev:hover {
+			transform: translateX(-10px);
+		}
+
+		.next {
+			right: 10px;
+		}
+
+		/* 다음 화살표에 마우스 커서가 올라가 있을때 
+		이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+		.next:hover {
+			transform: translateX(10px);
+		}
+
+	/*	.t_Info {
+			width: 550px;
+			height: 550px;
+			margin: 50px auto;
+			text-align: center;
+		}
+*/
+		.nav_icon {
+			margin-top: 330px;
+			height: 50px;
+			margin-left: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<header>
+			<div class="head">
+				<img src="./project_img_vedio/title.png" alt="title">
+			</div>
+		</header>
+		<nav>
+			<ul class="nav_ul">
+				<li class="menu1"><a href="./IntroductionCenter.html">Introduce Center</a></li>
+				<li class="menu2 "> Rservation
+					<ul class="hidden_menu">
+						<li><a href="./Membership.html">Only-Member</a></li>
+						<li><a href="./Onedayclass.html">Oneday-Class</a></li>
+					</ul>
+				</li>
+				<li class="menu3"><a href="./Review.html">Review</a></li>
+			</ul>
+		</nav>
+		<section>
+			<div class="section_img">
+				<h1>Hello, Yoga's Trainer</h1>
+					<div id="sec_1" onclick="location.href='./IntroductionCenter.html#Ann'"></div>
+					<div id="sec_2" onclick="location.href='./IntroductionCenter.html#Bona'"></div>
+					<div id="sec_3" onclick="location.href='./IntroductionCenter.html#Colin'"></div>
+					<div id="sec_4" onclick="location.href='./IntroductionCenter.html#Dora'"></div>
+			</div>
+			<div class="slider_wrap">
+				<div id="slideShow">
+					<ul class="slides">
+						<li class="li_1"><img src="./project_img_vedio/slider_1.png" alt=""></li>
+						<li class="li_2"><img src="./project_img_vedio/slider_2.png" alt=""></li>
+						<li class="li_3"><img src="./project_img_vedio/slider_3.png" alt=""></li>
+						<li class="li_4"><img src="./project_img_vedio/slider_4.png" alt=""></li>
+					</ul>
+					<p class="controller">
+
+						<!-- &lang: 왼쪽 방향 화살표
+						&rang: 오른쪽 방향 화살표 -->
+						<span class="prev">&lang;</span>
+						<span class="next">&rang;</span>
+					</p>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="icon">
+				<img src="./project_img_vedio/location.png" alt="adress">
+				<div class="adress"> <a
+						href="https://map.naver.com/p/search/%ED%95%98%EC%9D%B4%EB%AF%B8%EB%94%94%EC%96%B4%EC%BB%B4%ED%93%A8%ED%84%B0%ED%95%99%EC%9B%90%20%EC%A2%85%EB%A1%9C/place/1854864316?placePath=?entry=pll&from=nx&fromNxList=true&c=15.00,0,0,0,dh">서울시
+						종로구 인사동길 12 16층 </a></div>
+				<img src="./project_img_vedio/instagram.png" alt="instagram">
+				<div> <a href="https://www.instagram.com/_silverzero__2/">@Hello, yoga</a></div>
+				<img src="./project_img_vedio/email.png" alt="email">
+				<div id="email">ppeeyy0305@gmail.com</div>
+			</div>
+		</footer>
+	</div>
+	<script>
+
+		//mouseover /mouseout 
+		$("#sec_1").mouseover(function () {
+			$("#sec_1").css({
+				"background-image": "url('./project_img_vedio/Ann2.png')",
+				"background-color": "rgb(249, 249, 131,0.8)",
+				"border": "3px solid black"
+			})
+		});
+		$("#sec_1").mouseout(function () {
+			$("#sec_1").css({
+				"background-image": "url('./project_img_vedio/Ann1.png')",
+				"background-color": "transparent",
+				"border": "3px dashed black"
+			});
+		})
+
+		$("#sec_2").mouseover(function () {
+			$("#sec_2").css({
+				"background-image": "url('./project_img_vedio/Bona2.png')",
+				"background-color": "rgb(249, 249, 131,0.8)",
+				"border": "3px solid black"
+			})
+		});
+		$("#sec_2").mouseout(function () {
+			$("#sec_2").css({
+				"background-image": "url('./project_img_vedio/Bona1.png')",
+				"background-color": "transparent",
+				"border": "3px dashed black"
+			});
+		})
+
+		$("#sec_3").mouseover(function () {
+			$("#sec_3").css({
+				"background-image": "url('./project_img_vedio/Colin2.png')",
+				"background-color": "rgb(249, 249, 131,0.8)",
+				"border": "3px solid black"
+			})
+		});
+		$("#sec_3").mouseout(function () {
+			$("#sec_3").css({
+				"background-image": "url('./project_img_vedio/Colin1.png')",
+				"background-color": "transparent",
+				"border": "3px dashed black"
+			});
+		})
+
+		$("#sec_4").mouseover(function () {
+			$("#sec_4").css({
+				"background-image": "url('./project_img_vedio/Dora2.png')",
+				"background-color": "rgb(249, 249, 131,0.8)",
+				"border": "3px solid black"
+			})
+		});
+		$("#sec_4").mouseout(function () {
+			$("#sec_4").css({
+				"background-image": "url('./project_img_vedio/Dora1.png')",
+				"background-color": "transparent",
+				"border": "3px dashed black"
+			});
+		})
+
+		// writeText( )안의 문자 복사
+		$("#email").click(function () {
+			window.navigator.clipboard.writeText("ppeeyy0305@gmail.com").then(() => {
+				alert("복사 완료!");
+			})
+		})
+
+	/*	const t_info = document.querySelectorAll('.t_Info div');
+		for (let i = 0; i < t_info.length; i++)
+			if (currentIdx = t_info[i])
+				t_info[i].show();
+			else { t_info.hide(); }*/
+
+		const slides = document.querySelector('.slides'); //전체 슬라이드 컨테이너
+		const slideImg = document.querySelectorAll('.slides li'); //모든 슬라이드들
+		let currentIdx = 0; //현재 슬라이드 index
+		const slideCount = slideImg.length; // 슬라이드 개수
+		const prev = document.querySelector('.prev'); //이전 버튼
+		const next = document.querySelector('.next'); //다음 버튼
+		const slideWidth = 600; //한개의 슬라이드 넓이
+		const slideMargin = 40; //슬라이드간의 margin 값
+
+		//전체 슬라이드 컨테이너 넓이 설정
+		slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
+
+		function moveSlide(num) {
+			//슬라이드를 왼쪽 얼만큼씩 밀껀지 = -num * 600 + 'px'; 
+			//slideWidth = 한개의 슬라이드 넓이
+			slides.style.left = -num * 600 + 'px';
+			currentIdx = num;
+		}
+
+		prev.addEventListener('click', function () {
+			/*첫 번째 슬라이드로 표시 됐을때는 
+			이전 버튼 눌러도 아무런 반응 없게 하기 위해 
+			currentIdx !==0일때만 moveSlide 함수 불러옴 */
+
+			if (currentIdx !== 0) { moveSlide(currentIdx - 1) };
+		});
+
+		next.addEventListener('click', function () {
+			/* 마지막 슬라이드로 표시 됐을때는 
+			다음 버튼 눌러도 아무런 반응 없게 하기 위해
+			currentIdx !==slideCount - 1 일때만 
+			moveSlide 함수 불러옴 */
+			if (currentIdx !== slideCount - 1) {
+				moveSlide(currentIdx + 1);
+			}
+		});
+
+		</script>
+	</body>
+</html>

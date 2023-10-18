@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!--DatePicker-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;700&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
+	<script src="./jquery.com/code.jquery.com_jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<title>OnedayClass</title>
+<style>
+	
+	body{
+    width: 600px;
+    margin: 0 auto;
+		background-image: url("./project_img_vedio/bg.jpg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		font-family: 'Abril Fatface', serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+  }
+
+fieldset{
+  margin:70px 10px 10px 10px;
+  height: 650px;
+  border-radius: 20px;
+  padding: 50px;
+  box-sizing:border-box;
+  border: 10px double yellow;
+}
+
+legend{
+  font-size:40px;
+  color: blue;  
+}
+
+.key{
+	width: 100px;
+	height: 70px;
+	font-size: 25px;
+}
+
+input{
+	height: 23px;
+	width: 200px;
+	margin-top: 10px;
+	border-radius: 10px;
+	border: none;
+}
+
+.key_t{
+	margin-top: 10px;
+	font-size: 25px;
+}
+
+#Ann ,#Bona, #Colin, #Dora{
+	width: 30px;	
+}
+
+#submitbtn{
+margin-left:200px;
+margin-top:30px;	
+}
+
+.t_none{
+	padding: 10px;
+	font-size: 20px;
+	text-align: center;
+	width: 100%
+}
+
+.t_none button{
+	display:  inline-block;
+	margin-right:20px ;
+}
+
+button{
+	height: 50px;
+	padding: 5px;
+	background-color: rgb(92, 189, 253);
+	border-radius: 5px ;
+	border: 1px solid yellow ;
+	transition: all 0.2s linear;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+button:hover{
+	transform: scale(1.2);
+}
+
+a{
+color: black;
+text-decoration: none;
+}
+</style>
+</head>
+<body>
+	<div>
+		<form action="" method="get">
+			<fieldset>
+				<legend> 원데이 클래스 신청서</legend>
+					<div class="key">이름 <input id="name" type="text" placeholder="Name" txtOnly required> </div>
+					<div class="key">연락처  <input id="phone" type="text" placeholder="000-0000-0000" maxlength="13" telOnly  required></div>
+					<div class="key_t" >트레이너 <br>
+						<label> <input type="radio" name="Trainer" id="Ann" value="1">Ann</label>
+						<label><input type="radio" name="Trainer" id="Bona" value="2">Bona</label>
+						<label><input type="radio" name="Trainer" id="Colin" value="3">Colin</label>
+						<label> <input type="radio" name="Trainer" id="Dora" value="4">Dora</label>
+					</div>	
+			<div class="key" ><p>날짜<input type="text" id="datepicker" class="date" placeholder="Date" dateOnly required></p></div>
+			<button id="submitbtn" type="submit" >작성완료</button>	
+			</fieldset>
+    </form>
+		
+	<div class="t_none">
+		<span> ❓혹시 선생님을 선택하지 못 하셨나요?</span><br> <br>
+			<button>	<a href="./IntroductionCenter.html#trainer">선생님 소개 보러가기<a></a></button>
+			<button id="random">선생님 랜덤 설정</button>
+	</div>
+<script>
+//input에 문자, 숫자, 기호 제한
+$(document).on("keyup", "input[txtOnly]", function() {$(this).val( $(this).val().replace(/[^ㄱ-힣a-zA-Z]/gi,"") );})
+$(document).on("keyup", "input[telOnly]", function() {$(this).val( $(this).val().replace(/[^0-9-]/gi,"") );})
+$(document).on("keyup", "input[dateOnly]", function() {$(this).val( $(this).val().replace(/[^0-9/]/gi,"") );})
+
+//달력
+$( function() {
+	$( "#datepicker" ).datepicker(); 
+} );
+
+//랜덤 설정
+$("#random").click(function(){ 
+	var com = Math.ceil(Math.random()*4)
+	window.open("Trandom"+com+".html","Trandom"+com,"width=500, height=500, top=0, left=0");
+	
+	if(com == 1 )
+	{$("#Ann").prop('checked', true);}
+	else if(com == 2 )
+	{$("#Bona").prop('checked', true);}
+	else if(com == 3 )
+	{$("#Colin").prop('checked', true);}
+	else if(com == 4 )
+	{$("#Dora").prop('checked', true);}
+
+})
+	
+//input alert
+	$("#submitbtn").click(function(){
+		complateSubmit();
+	})
+
+	function complateSubmit(){
+		var name = $("#name").val();
+		var phone = $("#phone").val();
+		var date = $(".date").val();
+		var trainer = document.querySelector("input[name=Trainer]:checked");
+		
+		if (name !=""){
+			if (phone !=""){
+				if(date !=""){	
+					if(trainer){
+						alert("신청해주셔서 감사합니다. 연락드리겠습니다😊")
+					}else{
+					alert("트레이너를 선택해주세요!")
+					//submit 무력화 , 기존 기록한 정보 지킴
+					event.preventDefault();
+				}
+				}else{
+				alert("날짜를 선택해주세요!")
+				$(".date").focus();
+			}
+			}else{
+				alert("연락처를 적어주세요!")
+				$("#phone").focus();
+		}
+		}else{
+			alert("이름을 적어주세요!")
+			$("#name").focus();
+		}
+	}
+  </script>
+</body>
+</html>
